@@ -1,0 +1,14 @@
+<h2>Questions</h2>
+
+<ul>
+  <% @questions.each do |question| %>
+  <li>
+    <%= link_to question.title, question_path(question) %>
+    <%= question.description %>
+    <%= question.created_at %>
+    <% if question.created_at != question.updated_at %>
+      <%= question.updated_at %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

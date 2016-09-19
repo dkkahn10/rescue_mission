@@ -1,0 +1,14 @@
+<p>
+  <strong>Title: </strong>
+  <%= @question.title %><br>
+  <strong>Description: </strong>
+  <%= @question.description %><br>
+  <strong>Created At: </strong>
+  <%= @question.created_at %><br>
+  <% if @question.created_at != @question.updated_at %>
+    <strong>Updated At: </strong>
+    <%= @question.updated_at %>
+  <% end %>
+</p>
+
+<h3><%= link_to "Question Index", questions_path %></h3>
