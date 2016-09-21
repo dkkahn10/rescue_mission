@@ -5,6 +5,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
+    @answers = Answer.where(@question.id == :question_id).order(created_at: :desc)
   end
 
   def new
@@ -15,9 +17,10 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-      redirect_to question_path(@question),
-      notice: 'Question was successfully created.'
+      flash[:notice] = 'Question was successfully created.'
+      redirect_to question_path(@question)
     else
+      flash[:alert] = "Failed to save question"
       render :new
     end
 

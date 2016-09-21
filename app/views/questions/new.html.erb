@@ -1,5 +1,11 @@
 <h1>New Question</h1>
 
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <%= render 'form' %>
 
 <%= link_to "Back", questions_path %>

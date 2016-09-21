@@ -1,0 +1,27 @@
+<%= form_for([@question, @answer]) do |f| %>
+  <% if @answer.errors.any? %>
+    <div>
+
+      <h2>
+        <%= pluralize(@answer.errors.count, "error") %> Answer could not be saved!
+      </h2>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <div class="field" id="description">
+    <%= f.label :description, "Answer" %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit Answer" %>
+  </div>
+
+<% end %>
